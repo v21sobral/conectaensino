@@ -11,17 +11,26 @@
     <!-- Header -->
     <header>
         <nav>
-            <a href="#" class="logo">Conecta Ensino</a>
+            <a href="index.html" class="logo">Conecta Ensino</a>
             <div class="search-bar">
                 <i class="fas fa-search"></i>
                 <input type="text" id="searchInput" placeholder="Pesquisar por qualquer curso">
             </div>
             <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
                 <li><a href="#">Categorias</a></li>
                 <li><a href="#">Ensinar</a></li>
+                <li id="meusCursosLink" style="display: none;"><a href="meus-cursos.html">Meus Cursos</a></li>
             </ul>
-            <button class="btn-secondary" id="btnEntrar" type="button">Entrar</button>
-            <button class="btn-primary" id="btnCadastrar" type="button">Cadastrar</button>
+            <div id="authButtons">
+                <button class="btn-secondary" id="btnEntrar" type="button">Entrar</button>
+                <button class="btn-primary" id="btnCadastrar" type="button">Cadastrar</button>
+            </div>
+            <div id="userMenuContainer" style="display: none;">
+                <button class="btn-primary" type="button" onclick="window.location.href='meus-cursos.html'">
+                    <i class="fas fa-user-circle"></i> <span id="userNameHeader">Meu Perfil</span>
+                </button>
+            </div>
         </nav>
     </header>
 

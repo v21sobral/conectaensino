@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados da Pesquisa - Conecta Ensino</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Conecta Ensino</a>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Pesquisar por qualquer curso">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#">Categorias</a></li>
+                <li><a href="#">Ensinar</a></li>
+            </ul>
+            <button class="btn-secondary" id="btnEntrar" type="button">Entrar</button>
+            <button class="btn-primary" id="btnCadastrar" type="button">Cadastrar</button>
+        </nav>
+    </header>
+
+    <!-- Modal de Login (mesmo do index) -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Entrar no Conecta Ensino</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" required placeholder="Digite sua senha">
+                </div>
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="remember">
+                        <span>Lembrar de mim</span>
+                    </label>
+                    <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                </div>
+                <button type="submit" class="btn-primary btn-full">Entrar</button>
+                <div class="divider">
+                    <span>ou</span>
+                </div>
+                <button type="button" class="btn-social btn-google">
+                    <i class="fab fa-google"></i> Continuar com Google
+                </button>
+                <button type="button" class="btn-social btn-facebook">
+                    <i class="fab fa-facebook"></i> Continuar com Facebook
+                </button>
+                <p class="signup-link">
+                    Não tem uma conta? <a href="cadastro.html">Cadastre-se</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="search-results-container">
+        <!-- Search Header -->
+        <div class="search-header">
+            <h1 id="searchTitle">Resultados para ""</h1>
+            <p class="search-info"><strong id="resultsCount">0</strong> cursos encontrados</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters-section">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="iniciante">Iniciante</button>
+            <button class="filter-btn" data-filter="intermediario">Intermediário</button>
+            <button class="filter-btn" data-filter="avancado">Avançado</button>
+            <button class="filter-btn" data-filter="mais-vendidos">Mais Vendidos</button>
+            <button class="filter-btn" data-filter="melhor-avaliados">Melhor Avaliados</button>
+        </div>
+
+        <!-- Results Grid -->
+        <div class="results-grid" id="resultsGrid">
+            <!-- Results will be dynamically generated -->
+        </div>
+
+        <!-- No Results Message -->
+        <div class="no-results" id="noResults" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h2>Nenhum curso encontrado</h2>
+            <p>Tente pesquisar com palavras-chave diferentes ou explore nossas categorias</p>
+            <a href="index.html" class="back-home">Voltar para Início</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Conecta Ensino</h4>
+                <ul>
+                    <li><a href="#">Sobre nós</a></li>
+                    <li><a href="#">Carreiras</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Comunidade</h4>
+                <ul>
+                    <li><a href="#">Alunos</a></li>
+                    <li><a href="#">Instrutores</a></li>
+                    <li><a href="#">Afiliados</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Suporte</h4>
+                <ul>
+                    <li><a href="#">Central de Ajuda</a></li>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Conecta Ensino. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="pesquisa.js"></script>
+</body>
+</html>

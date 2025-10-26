@@ -158,14 +158,51 @@ function renderCourses(coursesToRender) {
 window.addEventListener('load', function() {
     console.log('Página carregada!');
     
+    // Check if user is logged in
+    checkUserSession();
+    
     // Initial render
     renderCourses(courses);
 
     // Search functionality
     const searchInput = document.getElementById('searchInput');
+    const searchIcon = document.querySelector('.search-bar i');
+    
     if (searchInput) {
+        // Function to perform search
+        const performSearch = () => {
+            const searchTerm = searchInput.value.trim();
+            if (searchTerm) {
+                console.log('Redirecionando para pesquisa:', searchTerm);
+                window.location.href = `pesquisa.html?q=${encodeURIComponent(searchTerm)}`;
+            }
+        };
+
+        // Search on Enter key - redirects to search page
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performSearch();
+            }
+        });
+
+        // Search on icon click
+        if (searchIcon) {
+            searchIcon.style.cursor = 'pointer';
+            searchIcon.addEventListener('click', (e) => {
+                e.preventDefault();
+                performSearch();
+            });
+        }
+
+        // Real-time filter on home page (optional - filters courses on same page)
         searchInput.addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
+            if (searchTerm === '') {
+                // Show all courses if search is empty
+                renderCourses(courses);
+                return;
+            }
             const filteredCourses = courses.filter(course => 
                 course.title.toLowerCase().includes(searchTerm) ||
                 course.instructor.toLowerCase().includes(searchTerm)
