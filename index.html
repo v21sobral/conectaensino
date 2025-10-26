@@ -11,143 +11,919 @@
     <!-- Header -->
     <header>
         <nav>
-            <a href="index.html" class="logo">Conecta Ensino</a>
+            <a href="javascript:void(0)" class="logo" onclick="showPage('home')">Conecta Ensino</a>
             <div class="search-bar">
                 <i class="fas fa-search"></i>
                 <input type="text" id="searchInput" placeholder="Pesquisar por qualquer curso">
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Início</a></li>
-                <li><a href="#">Categorias</a></li>
-                <li><a href="#">Ensinar</a></li>
-                <li id="meusCursosLink" style="display: none;"><a href="meus-cursos.html">Meus Cursos</a></li>
+                <li><a href="javascript:void(0)" onclick="showPage('home')">Início</a></li>
+                <li><a href="javascript:void(0)">Categorias</a></li>
+                <li><a href="javascript:void(0)">Ensinar</a></li>
+                <li id="meusCursosLink" style="display: none;">
+                    <a href="javascript:void(0)" onclick="showPage('meus-cursos')">Meus Cursos</a>
+                </li>
             </ul>
             <div id="authButtons">
                 <button class="btn-secondary" id="btnEntrar" type="button">Entrar</button>
                 <button class="btn-primary" id="btnCadastrar" type="button">Cadastrar</button>
             </div>
             <div id="userMenuContainer" style="display: none;">
-                <button class="btn-primary" type="button" onclick="window.location.href='meus-cursos.html'">
-                    <i class="fas fa-user-circle"></i> <span id="userNameHeader">Meu Perfil</span>
-                </button>
+                <div class="user-menu">
+                    <button class="user-btn" id="userBtn">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userNameHeader">Usuário</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="javascript:void(0)" onclick="showPage('meus-cursos')"><i class="fas fa-book"></i> Meus Cursos</a>
+                        <a href="javascript:void(0)"><i class="fas fa-heart"></i> Favoritos</a>
+                        <a href="javascript:void(0)"><i class="fas fa-shopping-cart"></i> Carrinho</a>
+                        <a href="javascript:void(0)"><i class="fas fa-cog"></i> Configurações</a>
+                        <hr>
+                        <a href="javascript:void(0)" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Aprenda sem Limites</h1>
-        <p>Mais de 10.000 cursos online com os melhores instrutores</p>
-        <button class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">Começar Agora</button>
-    </section>
+    <!-- ==================== PÁGINA HOME ==================== -->
+    <div id="page-home" class="page-content active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Aprenda sem Limites</h1>
+            <p>Mais de 10.000 cursos online com os melhores instrutores</p>
+            <button class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">Começar Agora</button>
+        </section>
 
-    <!-- Categories -->
-    <section class="categories">
-        <h2>Principais Categorias</h2>
-        <div class="category-grid">
-            <div class="category-card" data-category="desenvolvimento">
-                <i class="fas fa-code"></i>
-                <h3>Desenvolvimento</h3>
-                <p>2.453 cursos</p>
+        <!-- Categories -->
+        <section class="categories">
+            <h2>Principais Categorias</h2>
+            <div class="category-grid">
+                <div class="category-card" data-category="desenvolvimento">
+                    <i class="fas fa-code"></i>
+                    <h3>Desenvolvimento</h3>
+                    <p>2.453 cursos</p>
+                </div>
+                <div class="category-card" data-category="negocios">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Negócios</h3>
+                    <p>1.892 cursos</p>
+                </div>
+                <div class="category-card" data-category="design">
+                    <i class="fas fa-palette"></i>
+                    <h3>Design</h3>
+                    <p>1.634 cursos</p>
+                </div>
+                <div class="category-card" data-category="marketing">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>Marketing</h3>
+                    <p>1.421 cursos</p>
+                </div>
+                <div class="category-card" data-category="ti">
+                    <i class="fas fa-server"></i>
+                    <h3>TI e Software</h3>
+                    <p>1.287 cursos</p>
+                </div>
+                <div class="category-card" data-category="fotografia">
+                    <i class="fas fa-camera"></i>
+                    <h3>Fotografia</h3>
+                    <p>892 cursos</p>
+                </div>
             </div>
-            <div class="category-card" data-category="negocios">
-                <i class="fas fa-briefcase"></i>
-                <h3>Negócios</h3>
-                <p>1.892 cursos</p>
-            </div>
-            <div class="category-card" data-category="design">
-                <i class="fas fa-palette"></i>
-                <h3>Design</h3>
-                <p>1.634 cursos</p>
-            </div>
-            <div class="category-card" data-category="marketing">
-                <i class="fas fa-bullhorn"></i>
-                <h3>Marketing</h3>
-                <p>1.421 cursos</p>
-            </div>
-            <div class="category-card" data-category="ti">
-                <i class="fas fa-server"></i>
-                <h3>TI e Software</h3>
-                <p>1.287 cursos</p>
-            </div>
-            <div class="category-card" data-category="fotografia">
-                <i class="fas fa-camera"></i>
-                <h3>Fotografia</h3>
-                <p>892 cursos</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Courses Section -->
-    <section class="courses">
-        <h2>Cursos em Destaque</h2>
-        <div class="course-grid" id="courseGrid">
-            <!-- Courses will be dynamically generated -->
-        </div>
-    </section>
+        <!-- Courses Section -->
+        <section class="courses">
+            <h2>Cursos em Destaque</h2>
+            <div class="course-grid" id="courseGrid"></div>
+        </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stats-container">
-            <div class="stat-item">
-                <h3>10.000+</h3>
-                <p>Cursos Online</p>
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <h3>10.000+</h3>
+                    <p>Cursos Online</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50.000+</h3>
+                    <p>Alunos Ativos</p>
+                </div>
+                <div class="stat-item">
+                    <h3>2.500+</h3>
+                    <p>Instrutores</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4.8</h3>
+                    <p>Avaliação Média</p>
+                </div>
             </div>
-            <div class="stat-item">
-                <h3>50.000+</h3>
-                <p>Alunos Ativos</p>
-            </div>
-            <div class="stat-item">
-                <h3>2.500+</h3>
-                <p>Instrutores</p>
-            </div>
-            <div class="stat-item">
-                <h3>4.8</h3>
-                <p>Avaliação Média</p>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Conecta Ensino</h4>
-                <ul>
-                    <li><a href="#">Sobre nós</a></li>
-                    <li><a href="#">Carreiras</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
+    <!-- ==================== PÁGINA PESQUISA ==================== -->
+    <div id="page-pesquisa" class="page-content">
+        <div class="search-results-container">
+            <div class="search-header">
+                <h1 id="searchTitle">Resultados para ""</h1>
+                <p class="search-info"><strong id="resultsCount">0</strong> cursos encontrados</p>
             </div>
-            <div class="footer-section">
-                <h4>Comunidade</h4>
-                <ul>
-                    <li><a href="#">Alunos</a></li>
-                    <li><a href="#">Instrutores</a></li>
-                    <li><a href="#">Afiliados</a></li>
-                </ul>
+
+            <div class="filters-section">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="iniciante">Iniciante</button>
+                <button class="filter-btn" data-filter="intermediario">Intermediário</button>
+                <button class="filter-btn" data-filter="avancado">Avançado</button>
+                <button class="filter-btn" data-filter="mais-vendidos">Mais Vendidos</button>
+                <button class="filter-btn" data-filter="melhor-avaliados">Melhor Avaliados</button>
             </div>
-            <div class="footer-section">
-                <h4>Suporte</h4>
-                <ul>
-                    <li><a href="#">Central de Ajuda</a></li>
-                    <li><a href="#">Contato</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#">Termos de Uso</a></li>
-                    <li><a href="#">Política de Privacidade</a></li>
-                    <li><a href="#">Cookies</a></li>
-                </ul>
+
+            <div class="results-grid" id="resultsGrid"></div>
+
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h2>Nenhum curso encontrado</h2>
+                <p>Tente pesquisar com palavras-chave diferentes ou explore nossas categorias</p>
+                <a href="javascript:void(0)" onclick="showPage('home')" class="back-home">Voltar para Início</a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Conecta Ensino. Todos os direitos reservados.</p>
+    </div>
+
+    <!-- ==================== PÁGINA MEUS CURSOS ==================== -->
+    <div id="page-meus-cursos" class="page-content">
+        <div class="meus-cursos-container">
+            <aside class="sidebar">
+                <h3>Meu Aprendizado</h3>
+                <ul class="sidebar-menu">
+                    <li class="active">
+                        <a href="javascript:void(0)" data-filter="all">
+                            <i class="fas fa-book"></i>
+                            <span>Todos os Cursos</span>
+                            <span class="count" id="countAll">0</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" data-filter="in-progress">
+                            <i class="fas fa-spinner"></i>
+                            <span>Em Progresso</span>
+                            <span class="count" id="countProgress">0</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" data-filter="completed">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Concluídos</span>
+                            <span class="count" id="countCompleted">0</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" data-filter="favorites">
+                            <i class="fas fa-heart"></i>
+                            <span>Favoritos</span>
+                            <span class="count" id="countFavorites">0</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="sidebar-stats">
+                    <h4>Estatísticas</h4>
+                    <div class="stat-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <span class="stat-value" id="totalHours">0</span>
+                            <span class="stat-label">Horas de estudo</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-certificate"></i>
+                        <div>
+                            <span class="stat-value" id="totalCertificates">0</span>
+                            <span class="stat-label">Certificados</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div class="content-header">
+                    <h1>Meus Cursos</h1>
+                    <div class="header-actions">
+                        <div class="search-courses">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="courseSearch" placeholder="Buscar nos meus cursos...">
+                        </div>
+                        <select id="sortSelect" class="sort-select">
+                            <option value="recent">Mais Recentes</option>
+                            <option value="progress">Progresso</option>
+                            <option value="title">Título (A-Z)</option>
+                            <option value="completed">Concluídos Primeiro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="courses-grid" id="coursesGridMyCourses"></div>
+
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <i class="fas fa-book-open"></i>
+                    <h2>Nenhum curso encontrado</h2>
+                    <p>Comece sua jornada de aprendizado explorando nossos cursos</p>
+                    <a href="javascript:void(0)" onclick="showPage('home')" class="btn-primary">Explorar Cursos</a>
+                </div>
+            </main>
         </div>
-    </footer>
+    </div>
+
+    <!-- ==================== PÁGINA CADASTRO ==================== -->
+    <div id="page-cadastro" class="page-content">
+        <div class="cadastro-container">
+            <div class="cadastro-box">
+                <div class="cadastro-header">
+                    <a href="javascript:void(0)" onclick="showPage('home')" class="logo">Conecta Ensino</a>
+                    <h1>Crie sua conta</h1>
+                    <p>Comece sua jornada de aprendizado hoje</p>
+                </div>
+
+                <form id="cadastroForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" id="nome" name="nome" required placeholder="Seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="sobrenome">Sobrenome</label>
+                            <input type="text" id="sobrenome" name="sobrenome" required placeholder="Seu sobrenome">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emailCadastro">E-mail</label>
+                        <input type="email" id="emailCadastro" name="email" required placeholder="seu@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passwordCadastro">Senha</label>
+                        <input type="password" id="passwordCadastro" name="password" required placeholder="Mínimo 8 caracteres">
+                        <div class="password-strength">
+                            <div class="password-strength-bar" id="strengthBar"></div>
+                        </div>
+                        <p class="password-hint" id="passwordHint">Use 8 ou mais caracteres com letras, números e símbolos</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmar Senha</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Digite a senha novamente">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefone">Telefone (opcional)</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipoConta">Tipo de Conta</label>
+                        <select id="tipoConta" name="tipoConta" required style="width: 100%; padding: 0.8rem; border: 1px solid #d1d7dc; border-radius: 4px; font-size: 1rem;">
+                            <option value="">Selecione o tipo de conta</option>
+                            <option value="aluno">Aluno - Quero aprender</option>
+                            <option value="professor">Professor - Quero ensinar</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interesse">Principal interesse</label>
+                        <select id="interesse" name="interesse" required style="width: 100%; padding: 0.8rem; border: 1px solid #d1d7dc; border-radius: 4px; font-size: 1rem;">
+                            <option value="">Selecione uma categoria</option>
+                            <option value="desenvolvimento">Desenvolvimento</option>
+                            <option value="negocios">Negócios</option>
+                            <option value="design">Design</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="ti">TI e Software</option>
+                            <option value="fotografia">Fotografia</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="terms-checkbox">
+                        <label>
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <span>Eu aceito os <a href="javascript:void(0)">Termos de Uso</a> e a <a href="javascript:void(0)">Política de Privacidade</a></span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-full">Criar Conta</button>
+
+                    <div class="divider">
+                        <span>ou cadastre-se com</span>
+                    </div>
+
+                    <div class="social-cadastro">
+                        <button type="button" class="btn-social btn-google">
+                            <i class="fab fa-google"></i> Continuar com Google
+                        </button>
+                        <button type="button" class="btn-social btn-facebook">
+                            <i class="fab fa-facebook"></i> Continuar com Facebook
+                        </button>
+                    </div>
+
+                    <div class="login-link">
+                        Já tem uma conta? <a href="javascript:void(0)" id="linkLoginFromCadastro">Fazer login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PÁGINA CHECKOUT ==================== -->
+    <div id="page-checkout" class="page-content">
+        <div class="checkout-container">
+            <div class="checkout-content">
+                <!-- Breadcrumb -->
+                <div class="breadcrumb">
+                    <a href="javascript:void(0)" onclick="showPage('home')">Início</a>
+                    <span>/</span>
+                    <a href="javascript:void(0)" onclick="showPage('pesquisa')">Pesquisa</a>
+                    <span>/</span>
+                    <span>Finalizar Compra</span>
+                </div>
+
+                <h1>Finalizar Compra</h1>
+
+                <div class="checkout-grid">
+                    <!-- Lado Esquerdo - Informações -->
+                    <div class="checkout-left">
+                        <!-- Curso Selecionado -->
+                        <div class="checkout-section">
+                            <h2><i class="fas fa-shopping-bag"></i> Seu Pedido</h2>
+                            <div class="cart-items" id="cartItems">
+                                <!-- Será preenchido dinamicamente -->
+                            </div>
+                        </div>
+
+                        <!-- Método de Pagamento -->
+                        <div class="checkout-section">
+                            <h2><i class="fas fa-credit-card"></i> Método de Pagamento</h2>
+                            
+                            <div class="payment-methods">
+                                <div class="payment-method active" data-method="credit">
+                                    <input type="radio" name="payment" id="creditCard" checked>
+                                    <label for="creditCard">
+                                        <i class="fas fa-credit-card"></i>
+                                        <span>Cartão de Crédito</span>
+                                    </label>
+                                </div>
+                                
+                                <div class="payment-method" data-method="pix">
+                                    <input type="radio" name="payment" id="pix">
+                                    <label for="pix">
+                                        <i class="fas fa-qrcode"></i>
+                                        <span>PIX</span>
+                                    </label>
+                                </div>
+                                
+                                <div class="payment-method" data-method="boleto">
+                                    <input type="radio" name="payment" id="boleto">
+                                    <label for="boleto">
+                                        <i class="fas fa-barcode"></i>
+                                        <span>Boleto Bancário</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Form Cartão de Crédito -->
+                            <div id="creditCardForm" class="payment-form active">
+                                <div class="form-group">
+                                    <label for="cardNumber">Número do Cartão</label>
+                                    <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19">
+                                    <div class="card-brands">
+                                        <i class="fab fa-cc-visa"></i>
+                                        <i class="fab fa-cc-mastercard"></i>
+                                        <i class="fab fa-cc-amex"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="cardName">Nome no Cartão</label>
+                                    <input type="text" id="cardName" placeholder="Nome como está no cartão">
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="cardExpiry">Validade</label>
+                                        <input type="text" id="cardExpiry" placeholder="MM/AA" maxlength="5">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cardCVV">CVV</label>
+                                        <input type="text" id="cardCVV" placeholder="123" maxlength="4">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="installments">Parcelas</label>
+                                    <select id="installments">
+                                        <option value="1">1x sem juros</option>
+                                        <option value="2">2x sem juros</option>
+                                        <option value="3">3x sem juros</option>
+                                        <option value="4">4x sem juros</option>
+                                        <option value="5">5x sem juros</option>
+                                        <option value="6">6x sem juros</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Form PIX -->
+                            <div id="pixForm" class="payment-form">
+                                <div class="pix-info">
+                                    <i class="fas fa-qrcode pix-icon"></i>
+                                    <h3>Pague com PIX</h3>
+                                    <p>Após confirmar, você receberá um QR Code para pagamento instantâneo.</p>
+                                    <div class="pix-benefits">
+                                        <div class="pix-benefit">
+                                            <i class="fas fa-bolt"></i>
+                                            <span>Aprovação imediata</span>
+                                        </div>
+                                        <div class="pix-benefit">
+                                            <i class="fas fa-shield-alt"></i>
+                                            <span>Seguro</span>
+                                        </div>
+                                        <div class="pix-benefit">
+                                            <i class="fas fa-percentage"></i>
+                                            <span>5% de desconto</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Form Boleto -->
+                            <div id="boletoForm" class="payment-form">
+                                <div class="boleto-info">
+                                    <i class="fas fa-barcode boleto-icon"></i>
+                                    <h3>Boleto Bancário</h3>
+                                    <p>Após confirmar, você receberá o boleto para pagamento em qualquer banco.</p>
+                                    <div class="boleto-warning">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                        <span>O prazo para pagamento é de até 3 dias úteis. Seu acesso será liberado após a compensação.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dados Pessoais -->
+                        <div class="checkout-section">
+                            <h2><i class="fas fa-user"></i> Dados Pessoais</h2>
+                            
+                            <div class="form-group">
+                                <label for="checkoutName">Nome Completo</label>
+                                <input type="text" id="checkoutName" placeholder="Seu nome completo">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="checkoutEmail">E-mail</label>
+                                <input type="email" id="checkoutEmail" placeholder="seu@email.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="checkoutCPF">CPF</label>
+                                <input type="text" id="checkoutCPF" placeholder="000.000.000-00" maxlength="14">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="checkoutPhone">Telefone</label>
+                                <input type="tel" id="checkoutPhone" placeholder="(00) 00000-0000">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lado Direito - Resumo -->
+                    <div class="checkout-right">
+                        <div class="order-summary">
+                            <h2>Resumo do Pedido</h2>
+                            
+                            <div class="summary-item">
+                                <span>Subtotal</span>
+                                <span id="subtotal">R$ 0,00</span>
+                            </div>
+                            
+                            <div class="summary-item discount" id="discountRow" style="display: none;">
+                                <span>Desconto</span>
+                                <span id="discount" class="discount-value">- R$ 0,00</span>
+                            </div>
+                            
+                            <div class="coupon-section">
+                                <input type="text" id="couponCode" placeholder="Código do cupom">
+                                <button type="button" class="btn-secondary" onclick="applyCoupon()">Aplicar</button>
+                            </div>
+                            
+                            <div class="summary-divider"></div>
+                            
+                            <div class="summary-total">
+                                <span>Total</span>
+                                <span id="total">R$ 0,00</span>
+                            </div>
+
+                            <div class="payment-info" id="paymentInfo">
+                                <i class="fas fa-info-circle"></i>
+                                <span id="paymentInfoText">Pagamento em até 6x sem juros</span>
+                            </div>
+                            
+                            <button type="button" class="btn-primary btn-full btn-large" onclick="finalizarCompra()">
+                                <i class="fas fa-lock"></i> Finalizar Compra
+                            </button>
+                            
+                            <div class="security-badges">
+                                <div class="badge">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Compra Segura</span>
+                                </div>
+                                <div class="badge">
+                                    <i class="fas fa-certificate"></i>
+                                    <span>Certificado</span>
+                                </div>
+                                <div class="badge">
+                                    <i class="fas fa-infinity"></i>
+                                    <span>Acesso Vitalício</span>
+                                </div>
+                            </div>
+
+                            <div class="money-back">
+                                <i class="fas fa-undo-alt"></i>
+                                <div>
+                                    <strong>Garantia de 30 dias</strong>
+                                    <p>Devolução do dinheiro garantida</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PAINEL DO PROFESSOR ==================== -->
+    <div id="page-professor" class="page-content">
+        <div class="professor-container">
+            <aside class="sidebar">
+                <h3>Painel do Instrutor</h3>
+                <ul class="sidebar-menu">
+                    <li class="active">
+                        <a href="javascript:void(0)" data-section="dashboard">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" data-section="meus-cursos-prof">
+                            <i class="fas fa-book"></i>
+                            <span>Meus Cursos</span>
+                            <span class="count" id="countProfCourses">0</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" data-section="novo-curso">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Criar Curso</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" data-section="alunos">
+                            <i class="fas fa-users"></i>
+                            <span>Alunos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" data-section="receita">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span>Receita</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="sidebar-stats">
+                    <h4>Estatísticas</h4>
+                    <div class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <span class="stat-value" id="totalStudents">0</span>
+                            <span class="stat-label">Total de Alunos</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <div>
+                            <span class="stat-value" id="avgRating">4.8</span>
+                            <span class="stat-label">Avaliação Média</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <!-- Dashboard Section -->
+                <div id="section-dashboard" class="professor-section active">
+                    <div class="content-header">
+                        <h1>Dashboard</h1>
+                        <p>Visão geral do seu desempenho como instrutor</p>
+                    </div>
+
+                    <div class="dashboard-cards">
+                        <div class="dash-card">
+                            <div class="dash-card-icon" style="background: #5624d0;">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="dash-card-content">
+                                <h3 id="dashTotalCourses">0</h3>
+                                <p>Cursos Publicados</p>
+                            </div>
+                        </div>
+                        <div class="dash-card">
+                            <div class="dash-card-icon" style="background: #00c851;">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="dash-card-content">
+                                <h3 id="dashTotalStudents">0</h3>
+                                <p>Total de Alunos</p>
+                            </div>
+                        </div>
+                        <div class="dash-card">
+                            <div class="dash-card-icon" style="background: #ffa500;">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="dash-card-content">
+                                <h3 id="dashAvgRating">0</h3>
+                                <p>Avaliação Média</p>
+                            </div>
+                        </div>
+                        <div class="dash-card">
+                            <div class="dash-card-icon" style="background: #00a040;">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="dash-card-content">
+                                <h3 id="dashRevenue">R$ 0</h3>
+                                <p>Receita Total</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-activity">
+                        <h2>Atividades Recentes</h2>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <i class="fas fa-user-plus"></i>
+                                <div>
+                                    <p><strong>Novo aluno inscrito</strong> em "Python do Zero ao Avançado"</p>
+                                    <span class="activity-time">Há 2 horas</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-star"></i>
+                                <div>
+                                    <p><strong>Nova avaliação 5 estrelas</strong> em "JavaScript Moderno"</p>
+                                    <span class="activity-time">Há 5 horas</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-comment"></i>
+                                <div>
+                                    <p><strong>Novo comentário</strong> na aula "Introdução ao React"</p>
+                                    <span class="activity-time">Há 1 dia</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Novo Curso Section -->
+                <div id="section-novo-curso" class="professor-section">
+                    <div class="content-header">
+                        <h1>Criar Novo Curso</h1>
+                        <p>Preencha as informações do seu curso</p>
+                    </div>
+
+                    <form id="novoCursoForm" class="curso-form">
+                        <div class="form-section">
+                            <h3>Informações Básicas</h3>
+                            
+                            <div class="form-group">
+                                <label for="cursoTitulo">Título do Curso *</label>
+                                <input type="text" id="cursoTitulo" required placeholder="Ex: Python para Iniciantes">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cursoSubtitulo">Subtítulo</label>
+                                <input type="text" id="cursoSubtitulo" placeholder="Uma breve descrição do curso">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cursoDescricao">Descrição do Curso *</label>
+                                <textarea id="cursoDescricao" rows="5" required placeholder="Descreva o que os alunos aprenderão neste curso"></textarea>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cursoCategoria">Categoria *</label>
+                                    <select id="cursoCategoria" required>
+                                        <option value="">Selecione</option>
+                                        <option value="desenvolvimento">Desenvolvimento</option>
+                                        <option value="negocios">Negócios</option>
+                                        <option value="design">Design</option>
+                                        <option value="marketing">Marketing</option>
+                                        <option value="ti">TI e Software</option>
+                                        <option value="fotografia">Fotografia</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cursoNivel">Nível *</label>
+                                    <select id="cursoNivel" required>
+                                        <option value="">Selecione</option>
+                                        <option value="iniciante">Iniciante</option>
+                                        <option value="intermediario">Intermediário</option>
+                                        <option value="avancado">Avançado</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cursoIdioma">Idioma</label>
+                                    <select id="cursoIdioma">
+                                        <option value="pt-br">Português (Brasil)</option>
+                                        <option value="en">Inglês</option>
+                                        <option value="es">Espanhol</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cursoDuracao">Duração Total (horas)</label>
+                                    <input type="number" id="cursoDuracao" placeholder="Ex: 10">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Mídia do Curso</h3>
+                            
+                            <div class="form-group">
+                                <label for="cursoImagem">Imagem de Capa</label>
+                                <div class="upload-area" id="uploadImagemArea">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Clique para fazer upload ou arraste a imagem</p>
+                                    <span class="upload-hint">PNG, JPG (recomendado: 1280x720px)</span>
+                                    <input type="file" id="cursoImagem" accept="image/*" hidden>
+                                </div>
+                                <div id="imagePreview" class="image-preview" style="display: none;"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cursoVideo">Vídeo Promocional (Opcional)</label>
+                                <div class="upload-area" id="uploadVideoArea">
+                                    <i class="fas fa-video"></i>
+                                    <p>Clique para fazer upload do vídeo</p>
+                                    <span class="upload-hint">MP4, MOV (máx: 100MB)</span>
+                                    <input type="file" id="cursoVideo" accept="video/*" hidden>
+                                </div>
+                                <div id="videoPreview" class="video-preview" style="display: none;"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Conteúdo do Curso</h3>
+                            
+                            <div id="aulasContainer">
+                                <div class="aula-item">
+                                    <div class="aula-header">
+                                        <h4>Aula 1</h4>
+                                        <button type="button" class="btn-icon-small" onclick="removeAula(this)">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Título da Aula</label>
+                                        <input type="text" class="aula-titulo" placeholder="Ex: Introdução ao Python">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Vídeo da Aula</label>
+                                        <div class="upload-area-small">
+                                            <i class="fas fa-video"></i>
+                                            <span>Upload do vídeo</span>
+                                            <input type="file" accept="video/*" hidden class="aula-video">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Duração (minutos)</label>
+                                        <input type="number" class="aula-duracao" placeholder="Ex: 15">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn-secondary btn-full" onclick="adicionarAula()">
+                                <i class="fas fa-plus"></i> Adicionar Aula
+                            </button>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Precificação</h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cursoPreco">Preço (R$) *</label>
+                                    <input type="number" id="cursoPreco" step="0.01" required placeholder="89.90">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cursoDesconto">Preço Promocional (R$)</label>
+                                    <input type="number" id="cursoDesconto" step="0.01" placeholder="49.90">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" onclick="showPage('home')">Cancelar</button>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-check"></i> Publicar Curso
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Meus Cursos Prof Section -->
+                <div id="section-meus-cursos-prof" class="professor-section">
+                    <div class="content-header">
+                        <h1>Meus Cursos</h1>
+                        <p>Gerencie seus cursos publicados</p>
+                    </div>
+
+                    <div class="courses-grid" id="profCoursesGrid">
+                        <!-- Cursos do professor serão renderizados aqui -->
+                    </div>
+                </div>
+
+                <!-- Alunos Section -->
+                <div id="section-alunos" class="professor-section">
+                    <div class="content-header">
+                        <h1>Alunos</h1>
+                        <p>Veja quem está matriculado nos seus cursos</p>
+                    </div>
+
+                    <div class="students-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Curso</th>
+                                    <th>Progresso</th>
+                                    <th>Data de Inscrição</th>
+                                </tr>
+                            </thead>
+                            <tbody id="studentsTableBody">
+                                <tr>
+                                    <td>Maria Silva</td>
+                                    <td>Python do Zero ao Avançado</td>
+                                    <td><div class="progress-bar-small"><div class="progress-fill" style="width: 75%"></div></div> 75%</td>
+                                    <td>15/01/2025</td>
+                                </tr>
+                                <tr>
+                                    <td>João Santos</td>
+                                    <td>JavaScript Moderno</td>
+                                    <td><div class="progress-bar-small"><div class="progress-fill" style="width: 45%"></div></div> 45%</td>
+                                    <td>20/01/2025</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Receita Section -->
+                <div id="section-receita" class="professor-section">
+                    <div class="content-header">
+                        <h1>Receita</h1>
+                        <p>Acompanhe seus ganhos</p>
+                    </div>
+
+                    <div class="revenue-summary">
+                        <div class="revenue-card">
+                            <h3>Receita Este Mês</h3>
+                            <p class="revenue-value">R$ 4.250,00</p>
+                            <span class="revenue-change positive">+15% vs mês anterior</span>
+                        </div>
+                        <div class="revenue-card">
+                            <h3>Receita Total</h3>
+                            <p class="revenue-value">R$ 28.450,00</p>
+                            <span class="revenue-change">Desde o início</span>
+                        </div>
+                    </div>
+
+                    <div class="revenue-chart">
+                        <h3>Vendas nos Últimos 6 Meses</h3>
+                        <div class="chart-placeholder">
+                            <i class="fas fa-chart-bar"></i>
+                            <p>Gráfico de receita será exibido aqui</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
 
     <!-- Modal de Login -->
     <div id="loginModal" class="modal">
@@ -168,7 +944,7 @@
                         <input type="checkbox" name="remember">
                         <span>Lembrar de mim</span>
                     </label>
-                    <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                    <a href="javascript:void(0)" class="forgot-password">Esqueceu a senha?</a>
                 </div>
                 <button type="submit" class="btn-primary btn-full">Entrar</button>
                 <div class="divider">
@@ -181,11 +957,52 @@
                     <i class="fab fa-facebook"></i> Continuar com Facebook
                 </button>
                 <p class="signup-link">
-                    Não tem uma conta? <a href="cadastro.html">Cadastre-se</a>
+                    Não tem uma conta? <a href="javascript:void(0)" id="linkCadastro">Cadastre-se</a>
                 </p>
             </form>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Conecta Ensino</h4>
+                <ul>
+                    <li><a href="javascript:void(0)">Sobre nós</a></li>
+                    <li><a href="javascript:void(0)">Carreiras</a></li>
+                    <li><a href="javascript:void(0)">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Comunidade</h4>
+                <ul>
+                    <li><a href="javascript:void(0)">Alunos</a></li>
+                    <li><a href="javascript:void(0)">Instrutores</a></li>
+                    <li><a href="javascript:void(0)">Afiliados</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Suporte</h4>
+                <ul>
+                    <li><a href="javascript:void(0)">Central de Ajuda</a></li>
+                    <li><a href="javascript:void(0)">Contato</a></li>
+                    <li><a href="javascript:void(0)">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="javascript:void(0)">Termos de Uso</a></li>
+                    <li><a href="javascript:void(0)">Política de Privacidade</a></li>
+                    <li><a href="javascript:void(0)">Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Conecta Ensino. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
